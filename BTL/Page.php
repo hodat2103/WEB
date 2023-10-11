@@ -1,16 +1,37 @@
 <?php
-    include"./admin/connect.php";
-    if(!$_SESSION['login']){
-        header("Location: Login.php");
-    }
+include "./admin/connect.php";
 
-    $name ="";
-    $email = $_GET['email'];
-    $sql_name ="SELECT name FROM user WHERE email = '$email'";
-    $query_name = mysqli_query($conn,$sql_name);
+if (!$_SESSION['login']) {
+    header("Location: Login.php");
+    exit();
+}
+
+$email = '';
+
+if (isset($_SESSION['name'])) {
+    $name = $_SESSION['name'];
+} else {
+$email = $_GET['email'];
+
+    $sql_name = "SELECT name FROM account WHERE email = '$email'";
+    $query_name = mysqli_query($conn, $sql_name);
     $dt_name = mysqli_fetch_assoc($query_name);
-    $name = $dt_name;
+    if ($dt_name !== null) {
 
+        $name = $dt_name['name'];
+        $_SESSION['name'] = $name; // Lưu giá trị $name vào session
+    } else {
+        echo 'lỗi';
+    }
+}
+
+// lấy data tour
+$sql = 'SELECT * FROM tours';
+$data = mysqli_query($conn, $sql);
+$_SESSION['email'] = $email; 
+
+
+//
 ?>
 
 <html lang="en">
@@ -24,11 +45,21 @@
     <script src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.min.css"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
-        .option-item a {
-            color: #000000;
-            text-decoration: none;
-        }
+
+.content_item1{
+    margin-top: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    
+}
+.card{
+    margin: 20px;
+    height: 550px;
+    flex-basis: calc(33.33% - 130px);
+}
     </style>
 </head>
 
@@ -105,7 +136,7 @@
                 <a href="#" class="nav_link" title="Tin tức">TIN TỨC</a>
             </li>
             <li class="nav_item">
-                <a href="#" class="nav_link" title="Khuyến mãi">KHUYẾN MÃI</a>
+                <a href="./Voucher_Page.php" class="nav_link" title="Khuyến mãi">KHUYẾN MÃI</a>
             </li>
             <!-- <li class="nav_item">
                 <a href="#" class="nav_link" title="Liên hệ">LIÊN HỆ</a>
@@ -113,25 +144,27 @@
 
         </ul>
         <div class="username" style="z-index: 100;">
-                <label for=""><?php echo $name ?></label>
+            <label for="">Xin chào: <?php echo $name ?></label>
         </div>
-        <div>
-            <div class="nav_item1">
 
-                <a href=""><img class="nav_link" id="logo-profile" src="./asset//image/profile.png" alt=""></a>
+        <div class="nav_item1">
+
+            <a href=""><img class="nav_link" id="logo-profile" src="./asset//image/profile.png" alt=""></a>
 
 
-                <div class="nav_child1">
-                    <div class="nav_child-item1">
-                        <ul type="none" class="nav_child-list1">
-                            <li><a href="">Thay đổi thông tin cá nhân</a></li>
-                            <li><a href="./Logout.php">Đăng xuất</a></li>
-                        </ul>
-                    </div>
+            <div class="nav_child1">
+                <div class="nav_child-item1">
+                    <ul type="none" class="nav_child-list1">
+                        <li><a href="">Nạp tiền</a></li>
+                        <li><a href="" style="margin-left: -60px; margin-top: 20px;">Lịch sử đặt tour</a></li>
+                        <li><a href="">Thay đổi thông tin cá nhân</a></li>
+                        <li><a href="./Logout.php">Đăng xuất</a></li>
+                    </ul>
                 </div>
-
             </div>
+
         </div>
+
         <div class="btnSign-InUp">
 
 
@@ -168,25 +201,42 @@
 
         <div class="option" style="background-color: rgb(58, 163, 250);">
             <div class="suboption">
-                <ul class="suboption-child">
-                    <div class="option-item">
-                        <a href="">
-                            <li class="option-item-child">
-                                <img class="option-logo" id="logo-tour" src="./asset/image/tour.png" alt=""><br>
-                                <b class="option-title">Tour trọn gói</b>
-                            </li>
-                        </a>
-                    </div>
-                    <div class="option-item">
-                        <a href="">
-                            <li class="option-item-child">
-                                <img class="option-logo" id="logo_search" src="./asset/image/logo_search.png" alt=""><br>
-                                <b class="option-title">Tra cứu booking</b>
-                            </li>
-                        </a>
-                    </div>
+                <form action="http://localhost/BTL/Find_Tour.php">
+                    <ul class="suboption-child">
+                        <div class="option-item">
 
-                </ul>
+                            <li class="option-item-child">
+                                <label for="">Điểm đi</label>
+                                <input class="form-control" type="text" name="txtDiemDi">
+                            </li>
+
+                        </div>
+                        <div class="option-item">
+
+                            <li class="option-item-child">
+                                <label for="">Điểm đến</label>
+                                <input class="form-control" type="text" name="txtDiemDen">
+                            </li>
+
+                        </div>
+                        <div class="option-item">
+
+                            <li class="option-item-child">
+                                <label for="">Ngày đi</label>
+                                <input class="form-control" type="date" name="txtNgayDi">
+                            </li>
+
+                        </div>
+                        <div class="option-item">
+                            <a href="">
+                                <li class="option-item-child">
+                                    <input id="btnfind" class="btn btn-primary" type="submit" name="btnFind" value="Tìm">
+                                </li>
+                            </a>
+                        </div>
+
+                    </ul>
+                </form>
             </div>
         </div>
     </div>
@@ -197,129 +247,102 @@
             <h2>Tour nổi bật nhất</h2>
         </div>
         <div class="content_item1">
-            <div class="card" style="width: 18rem;">
-                <img style="width: 100%; height: 50%;" src="./asset/image/halong.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Tour Hà Nội - Móng Cái - Hạ Long - Ninh Bình </h5>
-                    <b>Thời gian: </b><b class="time">4 ngày - 3 đêm</b><br>
-                    <b>Khởi hành: </b><b class="depart">Hà Nội</b>
-                    <div class="rollNo-tour">
-                        <span><b>Mã tour: </b>
-                            <p class="rollNo">723HGHGDHJSLL</p>
-                        </span>
-                    </div>
+            
+            <?php
+            if (isset($data) && $data != null) {
+                $count = 0;
+                while ($row = mysqli_fetch_array($data)) {
+                    if ($count == 6) {
+                        break;
+                    }
+                    
+                    
+            ?>
+                    <div class="card" style="width: 18rem;">
+                        <img style="width: 100%; height: 40%;" src="./btlweb/tour/uploads/<?php echo $row['tour_image'] ?>" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $row['tour_name'] ?></h5>
+                            <b>Thời gian: </b><b class="time"><?php echo $row['time_tour'] ?></b><br>
+                            <b>Khởi hành: </b><b class="depart"><?php echo $row['depart_location'] ?> | <?php echo $row['depart_time'] ?></b>
+                            <div class="rollNo-tour">
+                                <span><b>Mã tour: </b>
+                                    <p class="rollNo"><?php echo $row['tour_code'] ?></p>
+                                </span>
+                            </div>
 
-                    <h6 class="price">Giá: 10,500,000đ</h4>
-                        <a href="#" class="btn btn-primary stretched-link" id="booking_tour">Đặt tour</a>
+                            <h6 class="price">Giá: <?php echo $row['old_price'] ?> VNĐ/người lớn</h4>
+                            <h6 class="price" style="font-size: 14px;">Giá: <?php echo $row['old_price']*0.5 ?> VNĐ/trẻ em(dưới 15 tuổi)</h4>
 
-                        <script>
-                            document.getElementById('booking_tour').addEventListener('click', function(event) {
-                                event.preventDefault(); // Ngăn chặn hành vi mặc định của thẻ <a>
+                                <a href="http://localhost/BTL/Booking_Tour.php" class="btn btn-primary booking-tour-btn" data-tour-name="<?php echo $row['tour_name'] ?>" data-tour-code="<?php echo $row['tour_code'] ?>" data-tour-time="<?php echo $row['time_tour'] ?>" data-depart-time="<?php echo $row['depart_time'] ?>" data-tour-price="<?php echo $row['old_price'] ?>">Đặt tour</a>
+                                <a style="margin: 20px 0px 0px 20px;float: right; color:#FF2A2A; font-weight: 600; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; "
+                                 href="http://localhost/BTL/Detail_Tour.php" class="detail-tour-btn" data-tour-code="<?php echo $row['tour_code'] ?>">Xem chi tiết</a>
+                                <script>
+                                    var detailTourButtons = document.getElementsByClassName('detail-tour-btn');
+                                    var bookingTourButtons = document.getElementsByClassName('booking-tour-btn');
 
-                                Swal.fire({
-                                    title: 'Thông báo',
-                                    text: 'Bạn có muốn đặt tour này không?',
-                                    icon: 'warning',
-                                    showCancelButton: true,
-                                    confirmButtonText: 'OK',
-                                    cancelButtonText: 'Hủy Bỏ'
-                                }).then((result) => {
-                                    if (result.isConfirmed) {
-                                        window.location.href = 'http://localhost/BTL/Booking_Tour.php'; 
+                                    for (var i = 0; i < detailTourButtons.length; i++) {
+                                        detailTourButtons[i].addEventListener('click', function(event) {
+                                            event.preventDefault();
+
+                                            var tourCode = this.getAttribute('data-tour-code');
+
+                                           
+                                                    window.location.href = this.href + '?tourCode=' + encodeURIComponent(tourCode);
+                                                    
+                                                }
+                                            );
+                                        }
+
+                                    for (var i = 0; i < bookingTourButtons.length; i++) {
+                                        bookingTourButtons[i].addEventListener('click', function(event) {
+                                            event.preventDefault();
+
+                                            var tourName = this.getAttribute('data-tour-name');
+                                            var tourCode = this.getAttribute('data-tour-code');
+                                            var timeTour = this.getAttribute('data-tour-time');
+                                            var departTime = this.getAttribute('data-depart-time');
+                                            var tourPrice = this.getAttribute('data-tour-price');
+                                            
+                                            Swal.fire({
+                                                title: 'Thông báo',
+                                                text: 'Bạn có muốn đặt tour ' + tourName + ' không?',
+                                                icon: 'warning',
+                                                showCancelButton: true,
+                                                confirmButtonText: 'OK',
+                                                cancelButtonText: 'Hủy Bỏ'
+                                            }).then((result) => {
+                                                if (result.isConfirmed) {
+                                                    window.location.href = this.href + '?tourName=' + encodeURIComponent(tourName) + '&tourCode=' + encodeURIComponent(tourCode) + '&timeTour=' + encodeURIComponent(timeTour) + '&departTime=' + encodeURIComponent(departTime) + '&tourPrice=' + encodeURIComponent(tourPrice);
+                                                    
+                                                    
+                                                }
+                                            });
+                                        });
                                     }
-                                });
-                            });
-                        </script>
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img style="width: 100%; height: 50%;" src="./asset/image/phongnha.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Tour Động Thiên Đường - Động Phong Nha</h5>
-                    <b>Thời gian: </b><b class="time">1 ngày</b><br>
-                    <b>Khởi hành: </b><b class="depart">Nghệ An</b>
-                    <div class="rollNo-tour">
-                        <span><b>Mã tour: </b>
-                            <p class="rollNo">723HGHGDHJSLL</p>
-                        </span>
+                                </script>
+
+                        </div>
+
                     </div>
 
-                    <h6 class="price">Giá: 2,050,000đ</h4>
-                        <a href="#" class="btn btn-primary stretched-link">Đặt tour</a>
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img style="width: 100%; height: 50%;" src="./asset/image/thacbandoc.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Tour Thác Bản Giốc - Hồ Ba Bể</h5>
-                    <b>Thời gian: </b><b class="time">2 ngày - 1 đêm</b><br>
-                    <b>Khởi hành: </b><b class="depart">Hà Nội</b>
-                    <div class="rollNo-tour">
-                        <span><b>Mã tour: </b>
-                            <p class="rollNo">723HGHGDHJSLL</p>
-                        </span>
-                    </div>
+            <?php
 
-                    <h6 class="price">Giá: 2,990,000đ</h4>
-                        <a href="#" class="btn btn-primary stretched-link">Đặt tour</a>
-                </div>
-            </div>
-
+                    $count++;
+                                
+                }
+            }
+            ?>
         </div>
-        <div class="content_item2">
-            <div class="card" style="width: 18rem;">
-                <img style="width: 100%; height: 40%;" src="./asset/image/hoian.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Tour Hội An - Ngũ Hành Sơn - Bà Nà Hills</h5>
-                    <b>Thời gian: </b><b class="time"> 3 ngày - 2 đêm</b><br>
-                    <b>Khởi hành: </b><b class="depart">TP Hồ Chí Minh</b>
-
-                    <div class="rollNo-tour">
-                        <span><b>Mã tour: </b>
-                            <p class="rollNo">723HGHGDHJSLL</p>
-                        </span>
-                    </div>
-                    <h6 class="price">Giá: 4,500,000đ</h4>
-                        <a href="#" class="btn btn-primary stretched-link">Đặt tour</a>
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img style="width: 100%; height: 40%;" src="./asset/image/phuquoc.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Tour Phú Quốc - Vinpearland</h5>
-                    <b>Thời gian: </b><b class="time">4 ngày - 3 đêm</b><br>
-                    <b>Khởi hành: </b><b class="depart">TP Hồ Chí Minh</b>
-
-                    <div class="rollNo-tour">
-                        <span><b>Mã tour: </b>
-                            <p class="rollNo">723HGHGDHJSLL</p>
-                        </span>
-                    </div>
-
-                    <h6 class="price">Giá: 6,990,000đ</h4>
-                        <a href="#" class="btn btn-primary stretched-link">Đặt tour</a>
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img style="width: 100%; height: 40%;" src="./asset/image/nhatrang.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Tour Vịnh Nha Trang - Tháp Bà - Vinpearland </h5>
-                    <b>Thời gian: </b><b class="time">4 ngày - 3 đêm</b><br>
-                    <b>Khởi hành: </b><b class="depart">Hà Nội</b>
-                    <div class="rollNo-tour">
-                        <span><b>Mã tour: </b>
-                            <p class="rollNo">723HGHGDHJSLL</p>
-                        </span>
-                    </div>
-
-
-                    <h6 class="price">Giá: 8,650,000đ</h4>
-                        <a href="#" class="btn btn-primary stretched-link">Đặt tour</a>
-                </div>
-            </div>
-
+        
         </div>
-
+        <div class="btnViewMore">
+            <button class="btn btn-danger" onclick="findTour()">>> Xem Thêm</button>
+            <script>
+                function findTour() {
+                    window.location.href = "http://localhost/BTL/Find_Tour.php";
+                }
+            </script>
+        </div>
         <div class="content-title1">
             <h2>Khuyến mãi đặc biệt</h2>
 
@@ -345,7 +368,7 @@
             <div class="card" style="width: 18rem;">
                 <img style="width: 100%; height: 40%;" src="./asset/image/phuquoc.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">Tour Phú Quốc - Vinpearland</h5>
+                    <h5 class="card-title">Tour Phú Quốc - Vinpearland - Cần Thơ</h5>
                     <b>Thời gian: </b><b class="time">4 ngày - 3 đêm</b><br>
                     <b>Khởi hành: </b><b class="depart">TP Hồ Chí Minh</b>
                     <div class="rollNo-tour">
@@ -382,7 +405,7 @@
             <h2>Vì sao chọn Travel Việt ?</h2>
         </div>
         <div class="content_item1">
-            <div class="card mb-3" style="max-width: 540px;">
+            <div class="card mb-3" style="max-width: 540px; height: 300px;">
                 <div class="row g-0">
                     <div class="col-md-4">
                         <img src="./asset/image/booking_icon.png" class="img-fluid rounded-start" alt="...">
@@ -396,7 +419,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card mb-3" style="max-width: 540px;">
+            <div class="card mb-3" style="max-width: 540px;height: 300px;">
                 <div class="row g-0">
                     <div class="col-md-4">
                         <img src="./asset/image/service_icon.png" class="img-fluid rounded-start" alt="...">
@@ -410,7 +433,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card mb-3" style="max-width: 540px;">
+            <div class="card mb-3" style="max-width: 540px;height: 300px;">
                 <div class="row g-0">
                     <div class="col-md-4">
                         <img src="./asset/image/pay_icon.png" class="img-fluid rounded-start" alt="...">
@@ -469,7 +492,25 @@
                         <h5 style="text-align: center;">Hãy liên hệ</h5>
                     </div>
                     <div class="btnphone">
-                        <button class="btn btn-danger"><img class="phone-icon" src="./asset/image/phone_icon.png" alt=""> 0334 204369</button>
+                        <button id="phone" class="btn btn-danger"><img class="phone-icon" src="./asset/image/phone_icon.png" alt=""> 0334 204369</button>
+                        <script>
+                            document.getElementById('phone').addEventListener('click', function(event) {
+                                event.preventDefault(); // Ngăn chặn hành vi mặc định của thẻ <a>
+
+                                Swal.fire({
+                                    title: 'Thông báo',
+                                    text: 'Bạn có muốn gọi đến SĐT 0334204369 không?',
+                                    icon: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonText: 'Có',
+                                    cancelButtonText: 'Hủy Bỏ'
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        window.location.href = '';
+                                    }
+                                });
+                            });
+                        </script>
                     </div>
                 </div>
             </div>

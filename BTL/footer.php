@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Website đặt tour du lịch</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         .footer {
             margin-top: 100px;
@@ -137,7 +138,25 @@
                     <h5 style="text-align: center;">Hãy liên hệ</h5>
                 </div>
                 <div class="btnphone">
-                    <button class="btn btn-danger"><img class="phone-icon" src="./asset/image/phone_icon.png" alt=""> 0334 204369</button>
+                    <button id="phone" class="btn btn-danger"><img class="phone-icon" src="./asset/image/phone_icon.png" alt=""> 0334 204369</button>
+                    <script>
+              document.getElementById('phone').addEventListener('click', function (event) {
+                event.preventDefault(); // Ngăn chặn hành vi mặc định của thẻ <a>
+
+                Swal.fire({
+                  title: 'Thông báo',
+                  text: 'Bạn có muốn gọi đến SĐT 0334204369 này không?',
+                  icon: 'warning',
+                  showCancelButton: true,
+                  confirmButtonText: 'Có',
+                  cancelButtonText: 'Hủy Bỏ'
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    window.location.href = '';
+                  }
+                });
+              });
+            </script>
                 </div>
             </div>
         </div>

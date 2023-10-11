@@ -1,0 +1,124 @@
+.scrollable-container {
+    height: 5000px;
+    overflow: auto;
+}
+.slideshow {
+width: 100%;
+height: 500px;
+position: relative;
+overflow: hidden;
+}
+
+.slideshow img {
+width: 100%;
+height: 100%;
+position: absolute;
+top: 0;
+left: 0;
+opacity: 0;
+transition: opacity 1s ease-in-out;
+}
+
+.slideshow img.active {
+opacity: 1;
+}
+
+
+
+.group-child {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: var(--br-xl);
+    background-color: var(--color-gray);
+    width: 1162px;
+    height: 300px;
+  }
+  
+  .rectangle-div {
+    position: absolute;
+    top: 240px;
+    left: 919px;
+    background-color: var(--color-maroon);
+    width: 225px;
+    height: 52px;
+  }
+  
+  .rectangle-parent {
+    top: -100px;
+    margin-left: 150px;
+    position: relative;
+    width: 100%;
+    height: 300px;
+    text-align: center;
+    font-size: var(--font-size-base);
+    color: var(--color-white);
+    font-family: var(--font-times-new-roman);
+  }
+  .group-text{
+    margin-left: 80px;
+    display:flex;
+    gap: 50px 100px;
+    width: 900px;
+  }
+  /*  content */
+  .containerr-content{
+    margin-left: 175px;
+    text-align: center;
+    margin-top: 750px;
+    width: 785px;
+    height: 1000px;
+    background-color: blueviolet;
+    display: grid;
+    gap: 50px 100px;
+  }
+  .coupon{
+    
+    display: flex;
+    margin-top:-500px ;
+    position: relative;
+    width: 600px;
+    height: 230px;
+    background-color: antiquewhite;
+   
+  }
+  .anhdong{
+    width: min-content;
+    height:250px;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    
+    
+    }
+    
+    .anhdong img{
+        padding: 20px;
+    width: 200px;
+    height: 230px;
+    filter: grayscale(.4);
+    transition: .3s;
+    }
+    
+    .anhdong img:hover{
+    filter: grayscale(0);
+    transform: scale(1.3) rotate(7deg);
+    }
+
+
+    .noidung{
+        padding: 20px;
+        width: 300px;
+        height: 300px;
+    }
+
+    /*                     */
+
+
+
+    .tour-sale-h1{
+      text-align: center;
+      color: blue;
+    }
+
+

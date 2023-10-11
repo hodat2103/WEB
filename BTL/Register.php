@@ -11,7 +11,7 @@ if (isset($_POST['first_name'])) {
     $conf_password = $_POST['confirm_password'];
 
 
-    $sql1 = "SELECT * FROM user WHERE email = '$email'";
+    $sql1 = "SELECT * FROM account WHERE email = '$email'";
     $query1 = mysqli_query($conn, $sql1);
     $data = mysqli_fetch_assoc($query1);
     if (empty($name)) {
@@ -31,11 +31,11 @@ if (isset($_POST['first_name'])) {
 
         if($email != $checkEmail){
             //mã hóa mật khẩu
-            $pass = substr(password_hash($password, PASSWORD_DEFAULT), 0, 10);
+            $pass = password_hash($password, PASSWORD_DEFAULT);
             //var_dump($pass);
             // die();
 
-            $sql = "INSERT INTO user(name,email,password) VALUES('$name','$email','$pass')";
+            $sql = "INSERT INTO account(name,email,password) VALUES('$name','$email','$pass')";
             $query = mysqli_query($conn, $sql);
             if ($query) {
                 header('Location: Login.php');
@@ -53,7 +53,7 @@ if (isset($_POST['first_name'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Đăng Ký</title>
     <link rel="stylesheet" href="./asset/css/registerStyle.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
 

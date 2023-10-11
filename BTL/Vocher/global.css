@@ -1,0 +1,46 @@
+body {
+    margin: 0;
+    line-height: normal;
+  }
+  
+  :root {
+    /* fonts */
+    --font-times-new-roman: "Times New Roman";
+    --font-kumbh-sans: "Kumbh Sans";
+    --font-inter: Inter;
+    --font-kadwa: Kadwa;
+    --font-kufam: Kufam;
+  
+    /* font sizes */
+    --font-size-7xl: 26px;
+    --font-size-base: 16px;
+    --font-size-4xl: 23px;
+    --font-size-xl: 20px;
+    --font-size-2xl: 21px;
+    --font-size-5xl: 24px;
+    --font-size-mid: 17px;
+    --font-size-9xl: 28px;
+    --font-size-lg: 18px;
+    --font-size-mini: 15px;
+    --font-size-sm: 14px;
+    --font-size-3xl: 22px;
+  
+    /* Colors */
+    --color-white: #fff;
+    --color-maroon: #841818;
+    --color-gray: rgba(13, 15, 18, 0.6);
+    --color-black: #000;
+    --color-darkturquoise: #48c5d7;
+    --color-snow: #fff4f4;
+    --color-lavenderblush: #fff3f3;
+    --color-red-100: #ff0808;
+    --color-red-200: #ff0000;
+    --color-indianred: #a7505a;
+    --color-royalblue: rgba(24, 119, 242, 0.37);
+    --color-darkslategray: #233f41;
+  
+    /* Border radiuses */
+    --br-xl: 20px;
+    --br-11xl: 30px;
+  }
+  

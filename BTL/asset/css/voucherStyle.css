@@ -1,0 +1,367 @@
+body {
+    margin: 0;
+    line-height: normal;
+  }
+  
+  :root {
+    /* fonts */
+    --font-kumbh-sans: "Kumbh Sans";
+    --font-inter: Inter;
+    --font-kadwa: Kadwa;
+    --font-inherit: inherit;
+  
+    /* font sizes */
+    --font-size-4xl: 23px;
+    --font-size-xl: 20px;
+    --font-size-mini: 15px;
+    --font-size-5xl: 24px;
+    --font-size-6xl: 25px;
+    --font-size-mid: 17px;
+    --font-size-11xl: 30px;
+    --font-size-lg: 18px;
+  
+    /* Colors */
+    --color-white: #fff;
+    --color-black: #000;
+    --color-darkturquoise: #48c5d7;
+    --color-cornflowerblue: #0d66b8;
+  
+    /* Paddings */
+    --padding-4xl: 23px;
+  
+    /* Border radiuses */
+    --br-xl: 20px;
+    --br-11xl: 30px;
+  }
+  
+  .vector-icon3 {
+    cursor: pointer;
+    position: absolute;
+    height: 39.48%;
+    width: 2.8%;
+    top: 35.99%;
+    right: 3.43%;
+    bottom: 30.53%;
+    left: 92.22%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+  }
+  
+  .header-child {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: var(--color-cornflowerblue);
+  }
+  
+  .header a:hover {
+    color: #383131;
+    ;
+  }
+  
+  .header a {
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    color: white;
+  }
+  
+  .du-lch,
+  .khch-sn,
+  .khuyn-mi,
+  .lin-h,
+  .tin-tc,
+  .vn-chuyn {
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+    font-family: Arial, Helvetica, sans-serif;
+    position: absolute;
+    height: 24%;
+    width: 10.77%;
+    top: 42%;
+    left: 67.46%;
+    display: inline-block;
+  }
+  
+  .du-lch,
+  .khch-sn,
+  .lin-h,
+  .tin-tc,
+  .vn-chuyn {
+    height: 25%;
+    width: 6.54%;
+    left: 81.62%;
+  }
+  
+  .du-lch,
+  .khch-sn,
+  .tin-tc,
+  .vn-chuyn {
+    height: 24%;
+    width: 9.85%;
+    left: 46.08%;
+  }
+  
+  .du-lch,
+  .tin-tc,
+  .vn-chuyn {
+    width: 6.62%;
+    left: 58.38%;
+  }
+  
+  .du-lch,
+  .vn-chuyn {
+    width: 6.85%;
+    left: 23.31%;
+  }
+  
+  .vn-chuyn {
+    width: 9.46%;
+    left: 33.38%;
+  }
+  
+  .homepage-removebg-preview-icon {
+    height: 39%;
+    width: 18.64%;
+    top: 31%;
+    right: 79.59%;
+    bottom: 30%;
+    left: 1.77%;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+  }
+  
+  .header,
+  .homepage-removebg-preview-icon,
+  .vector-icon {
+    position: absolute;
+    overflow: hidden;
+  }
+  
+  .vector-icon {
+    height: 30.07%;
+    width: 2.31%;
+    top: 27.08%;
+    right: 3.53%;
+    bottom: 42.85%;
+    left: 94.16%;
+    max-width: 100%;
+    max-height: 100%;
+  }
+  
+  .header {
+    height: 70px;
+    width: 100%;
+    top: 0;
+    right: 0;
+    bottom: 98.63%;
+    left: 0;
+    background-color: var(--color-darkturquoise);
+  }
+  .img-banner{
+    width: 100%;
+    height: 700px;
+    z-index: 1;
+  }
+  .title-banner{
+    margin-top: -600px;
+    z-index: 2;
+  }
+  .title-banner1,
+  .title-banner2,
+  .title-banner3{
+    font-weight: bold;
+    font-size: 20px;
+    margin-left: 100px;
+    margin-top: 50px;
+    margin-bottom: 100px;
+    display: flex;
+  }
+  .sale-1-wrapper {
+    left: 30px;
+  
+  }
+  .text-sale1{
+    color: #0d66b8;
+    padding-top: 150px;
+    font-size: 25px;
+    text-align: center;
+    margin: auto;
+  }
+  .sub-text-sale1{
+    text-align: justify;
+    padding: 20px 200px 0px 200px;
+  }
+  .img-km1 {
+    margin-left: 200px;
+    margin-top: 55px;
+    width: 65%;
+    height: 500px;
+  }
+  .content-sale2{
+    text-align: justify;
+    padding: 20px 200px 0px 200px;
+  }
+  .content-title3{
+    color: #0d66b8;
+    font-size: 19px;
+    padding-left: 190px;
+  
+  }
+  .content-text3{
+    text-align: justify;
+    padding: 20px 200px 0px 200px;
+  }
+  .sub-content-title3 h4{
+    font-size: 20px;
+  }
+  .sub-content-title3{
+    color: #fff;
+    padding: 15px 0px 0px 20px;
+    border-radius: 20px ;
+    margin: 0px 300px 0px 300px;
+    background-color: rgb(18, 203, 190);
+    height: 220px;
+  }
+  .information{
+    color: #0d66b8;
+    margin-top: 50px;
+    text-align: center;
+  }
+  .div-promotion-one-text-header p {
+    margin-top: 20px;
+    margin-left: 50px;
+  }
+  
+  .promotion-one{
+    text-align: justify;
+  }
+  .promotion-one-text-body {
+    padding: 20px 200px 0px 200px;
+    
+  }
+  
+  .sale-2-wrapper {
+    margin-top: 50px;
+    text-align: center;
+    width: 100%;
+    height: 200px;
+  }
+  
+  .sale-2-span {
+    text-align: center;
+    font-size: 25px;
+    color: #0d66b8;
+  }
+  
+  .footer{
+    width: 100%;
+    background-color: #48c5d7;
+    height: 350px;
+    display: flex;
+  }
+  .contact{
+    top: 323.82px;
+    left: 127.39px;
+    width: 601.56px;
+  }
+  .contact-title{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    color: white;
+    left: 30px;
+  }
+  .contact-title h3{
+    font-size: 20px;
+  }
+  .ig-icon,
+  .fb-icon,
+  .tik-icon{
+    width: 40px;
+    height: 40px;
+  }
+  
+  .qr-check{
+    margin-left: 100px;
+  }
+  .qr-title h3{
+    text-align: center;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .info-app{
+    display: flex;
+  }
+  .img-qr{
+    width: 120px;
+    height: 120px;
+  }
+  .btn-appstore{
+    height: 45px;
+    border-radius: 15px;
+    margin-left: 10px;
+    cursor: pointer;
+    display: flex;
+    background-color: #000;
+  }
+  .title-appstore h6 h4{
+    color: white;
+  }
+  .apple-icon{
+    
+    padding-top: 10px;
+    width: 30px;
+    height: 30px;
+  }
+  .btn{
+    padding-top: 10px;
+  }
+  .btn-googleplay{
+    margin-top: 10px;
+    width: 150px;
+    height: 45px;
+    border-radius: 15px;
+    margin-left: 10px;
+    cursor: pointer;
+    display: flex;
+    background-color: #000;
+  }
+  .play-icon{
+    padding-top: 10px;
+    width: 30px;
+    height: 30px;
+  }
+  .telephone{
+    margin-left: 250px;
+  }
+  .title-tele h3{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    color: white;
+  }
+  .sub-btn-tele{
+    margin-top: 20px;
+    cursor: pointer;
+    display: flex;
+    background-color: #ff0000;
+    border-radius: 15px;
+    width: 160px;
+    height: 50px;
+  }
+  .sub-btn-tele h4{
+    color: white;
+    font-size: 15px;
+    padding-left: 10px;
+    margin-top: 15px;
+  }
+  .img-tele{
+    padding-top: 5px;
+    width: 40px;
+    height: 40px;
+  }

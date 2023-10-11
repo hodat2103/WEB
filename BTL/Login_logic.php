@@ -1,11 +1,14 @@
 <?php
 include 'admin/connect.php';
-if (isset($_POST['btnLogin'])) {
+if (isset($_POST['btnLogin']) && isset($_POST['btnLogin'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
+
+    // Mã hóa email và truyền nó vào URL redirect
+    $encodedEmail = urlencode($email);
     
 
-    $sql = "SELECT * FROM user WHERE email = '$email'";
+    $sql = "SELECT * FROM account WHERE email = '$email'";
     $query = mysqli_query($conn, $sql);
     $data = mysqli_fetch_assoc($query);
     $checkEmail = mysqli_num_rows($query);
@@ -25,7 +28,8 @@ if (isset($_POST['btnLogin'])) {
             if ($checkPass) {
                 // lưu vào session
                 $_SESSION['login'] = $data['role'];
-                header("Location: Manager.php");
+                $_SESSION['email'] = $email;
+                header("Location: listtour.php");
             } else {
                 echo '<span style="color: red; margin-left: 40%;">Sai mật khẩu !</span>';
             }

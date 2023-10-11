@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='./promotion.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+ 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   <link rel="stylesheet" href="./promotion.css">
+    <link rel="stylesheet" href="./global.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+
+<body>
+    
+      
+
+   
+    <script>
+    var images = document.querySelectorAll('.slideshow img');
+    var currentImageIndex = 0;
+    var interval = setInterval(changeImage, 3000);
+
+    function changeImage() {
+        // Ẩn hình ảnh hiện tại
+        images[currentImageIndex].classList.remove('active');
+
+        // Tăng chỉ số hình ảnh
+        currentImageIndex++;
+
+        // Kiểm tra nếu đã hiển thị tất cả hình ảnh, trở lại hình ảnh đầu tiên
+        if (currentImageIndex >= images.length) {
+            currentImageIndex = 0;
+        }
+
+        // Hiển thị hình ảnh mới
+        images[currentImageIndex].classList.add('active');
+    }
+    </script>
+    </div>
+    <!-- ------------------------------------------------------------------------- -->
+    
+    <div class="rectangle-parent">
+      <div class="group-child">
+        <h1>Thêm voucher mới</h1>
+        <div class="group-text">
+            <div>
+            <h2>Mã voucher</h2>
+            <input type="text">
+            </div>
+            <div>
+            <h2>Mô tả voucher</h2>
+            <input type="text">
+            </div>
+            <div>
+            <h2>Trị giá voucher</h2>
+            <input type="text">
+            </div>
+            <div>
+            <h2>Thêm ảnh</h2>
+            <input type="submit" value="Chọn">
+            </div>
+        </div>
+        <button class="btn btn-primary">Thêm</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="containerr-content">
+        <h1>Danh sách voucher</h1>
+        <div class="coupon">
+            <div class="anhdong"><img   src="./picture/Travel coupon-name.jpg" alt=""></div>
+            <div class= "noidung">
+                <p>Chaof mungggggggggggg</p>
+                <p>Ma vocher</p>
+                <p>tri gia</p>
+
+            </div>
+            
+        </div>
+
+    </div>
+    <!--                                          -->
+    
+
+
+    
+
+</div>
+</body>
+</html>
+</body>
+</html>
